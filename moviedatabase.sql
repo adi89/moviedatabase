@@ -10,7 +10,6 @@ create table moviedata
   Directors varchar(80),
   Writers varchar(80),
   Actors varchar(250),
-  Plot varchar(1000),
   imdbRating float4
 
 
