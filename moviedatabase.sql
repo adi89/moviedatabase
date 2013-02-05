@@ -1,15 +1,17 @@
 create table moviedata
 (
-  id bigint primary key,
+  id serial8 primary key,
   Title varchar(40),
-  Year varchar(4) not null,
-  Rated float4,
-  Released varchar(20),
+  Year varchar(4),
+  Rated varchar(10),
+  Released varchar(30),
   Runtime varchar(20),
-  Genre varchar(20),
-  Directors varchar(40),
-  Writers varchar(40),
-  Actors varchar(80),
-  Plot varchar(350),
-  imdb_Rating float4
+  Genre varchar(60),
+  Directors varchar(80),
+  Writers varchar(80),
+  Actors varchar(250),
+  Plot varchar(1000),
+  imdbRating float4
+
+
 );

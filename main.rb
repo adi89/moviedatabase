@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 require 'pg'
 
-conn = PG.connect(:dbname =>'moviez', :host => 'localhost')
+conn = PG.connect(:dbname =>'moviedatabase', :host => 'localhost')
 conn.exec( "select * from moviedata" ) do |result|
   result.each do |row|
   end
@@ -20,12 +20,10 @@ input = HTTParty.get(mov_name)
 
 names = JSON(input.body)
 
-
 # puts "title: #{names.values.join("\n")}"
 
-sql = "insert into moviedata (Title, Year, Rated, Released, Runtime, Genre, Directors, Writers, Actors, Plot, imdb_Rating) values ('#{names["Title"]}, #{names["Year"]}, #{names["Rated"]}, #{names["Released"]}, #{names["Runtime"]}, #{names["Genre"]}, #{names["Directors"]}, #{names["Writers"]}, #{names["Actors"]}, #{names["Plot"]}, #{names["imdb_Rating"]}')"
+sqc = "insert into moviedata (Title, Year, Rated, Released, Runtime, Genre, Directors, Writers, Actors, Plot, imdbRating) values ('#{names["Title"]}', '#{names["Year"]}', '#{names["Rated"]}', '#{names["Released"]}', '#{names["Runtime"]}', '#{names["Genre"]}', '#{names["Directors"]}', '#{names["Writers"]}', '#{names["Actors"]}', '#{names["Plot"]}', '#{names["imdbRating"]}');"
+#sql = "insert into moviedata (title, year, rated, released, runtime, genre, director, writer, actors, plot, poster, imdbrating, imdbvotes, imdbID) values ('#{data['Title']}', '#{data['Year']}', '#{data['Rated']}', '#{data['Released']}', '#{data['Runtime']}', '#{data['Genre']}', '#{data['Director']}', '#{data['Writer']}', '#{data['Actors']}', '#{data['Plot']}', '#{data['Poster']}', '#{data['imdbRating']}', '#{data['imdbVotes']}', '#{data['imdbID']}')"
 
-# binding.pry
-
-conn.exec(sql)
+conn.exec(sqc)
 conn.close
