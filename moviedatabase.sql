@@ -13,5 +13,3 @@ create table moviedata
   Plot varchar(350),
   imdb_Rating float4
 );
-
-
